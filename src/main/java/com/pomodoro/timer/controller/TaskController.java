@@ -31,14 +31,13 @@ public class TaskController {
     }
 
     @PatchMapping("/{id}/complete")
-    public Task completeTask(@PathVariable int id) {
+    public Task completeTask(@PathVariable Long id) {
         return taskService.completeTask(id);
     }
 
     @DeleteMapping("/{id}")
-public Map<String, String> deleteTask(@PathVariable Long id) {
-    taskService.deleteTask(id);
-    return Map.of("message", "Task deleted successfully");
-}
+    public Map<String, String> deleteTask(@PathVariable Long id) {
+        taskService.deleteTask(id);
+        return Map.of("message", "Task deleted successfully");
     }
-
+}

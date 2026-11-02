@@ -3,17 +3,17 @@ package com.pomodoro.timer.model;
 
 public class Task {
 
-    private int id;
+    private Long id;
     private String title;
     private boolean completed;
 
-    public Task(int id, String title) {
+    public Task(Long id, String title) {
         this.id = id;
         this.title = title;
         this.completed = false;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 

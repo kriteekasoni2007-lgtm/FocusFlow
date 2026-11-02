@@ -9,7 +9,7 @@ import java.util.*;
 public class TaskService {
 
     private final List<Task> tasks = new ArrayList<>();
-    private int nextId = 1;
+    private long nextId = 1;
 
     public List<Task> getTasks() {
         return tasks;
@@ -28,7 +28,7 @@ public class TaskService {
         return task;
     }
 
-    public Task completeTask(int id) {
+    public Task completeTask(Long id) {
 
         for (Task task : tasks) {
             if (task.getId() == id) {
@@ -40,7 +40,7 @@ public class TaskService {
         throw new IllegalArgumentException("Task not found");
     }
 
-    public void deleteTask(int id) {
+    public void deleteTask(Long id) {
 
         boolean removed = tasks.removeIf(
                 task -> task.getId() == id);
