@@ -1,4 +1,3 @@
-
 package com.pomodoro.timer.util;
 
 import org.springframework.stereotype.Component;
@@ -12,17 +11,39 @@ public class FileManager {
 
     private final Path file = Paths.get("data", "sessions.csv");
 
-    public synchronized void saveSession(int minutes) {
+    public synchronized void saveSession(String type, int minutes) {
         try {
             Files.createDirectories(file.getParent());
 
+            // Create the CSV file if it does not exist
             if (!Files.exists(file)) {
                 Files.writeString(file,
-                    "Date,Focus Minutes\n",
+                    "Date,Session Type,Duration Minutes\n",
                     StandardOpenOption.CREATE);
             }
 
+            // Update the old CSV format if necessary
+            List<String> lines = Files.readAllLines(file);
+
+            if (!lines.isEmpty() &&
+                lines.get(0).equals("Date,Focus Minutes")) {
+
+                List<String> updated = new ArrayList<>();
+                updated.add("Date,Session Type,Duration Minutes");
+
+                for (int i = 1; i < lines.size(); i++) {
+                    String[] parts = lines.get(i).split(",", 2);
+
+                    if (parts.length == 2) {
+                        updated.add(parts[0] + ",FOCUS," + parts[1]);
+                    }
+                }
+
+                Files.write(file, updated);
+            }
+
             String data = LocalDateTime.now()
+                    + "," + type
                     + "," + minutes + "\n";
 
             Files.writeString(file, data,

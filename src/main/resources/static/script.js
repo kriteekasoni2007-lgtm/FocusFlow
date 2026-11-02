@@ -240,6 +240,8 @@ document.getElementById("taskForm")
 
 // SESSION HISTORY
 
+// SESSION HISTORY
+
 async function loadHistory() {
 
     try {
@@ -253,13 +255,42 @@ async function loadHistory() {
 
         history.forEach(session => {
 
+            const parts = session.split(",");
+
+            let date;
+            let type;
+            let minutes;
+
+            // Support old history records
+            if (parts.length === 2) {
+                date = parts[0];
+                type = "FOCUS";
+                minutes = Number(parts[1]);
+            } else {
+                date = parts[0];
+                type = parts[1];
+                minutes = Number(parts[2]);
+            }
+
+            const names = {
+                FOCUS: "Focus",
+                SHORT_BREAK: "Short Break",
+                LONG_BREAK: "Long Break"
+            };
+
             const li = document.createElement("li");
-            li.textContent = session;
+
+            const formattedDate = new Date(date).toLocaleString();
+
+            li.textContent =
+                names[type] + " • " +
+                minutes + " minutes • " +
+                formattedDate;
 
             list.appendChild(li);
 
-            const minutes = Number(session.split(",")[1]);
-            if (!Number.isNaN(minutes)) {
+            // Count only Focus minutes
+            if (type === "FOCUS" && !Number.isNaN(minutes)) {
                 totalMinutes += minutes;
             }
         });

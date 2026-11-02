@@ -1,4 +1,3 @@
-
 package com.pomodoro.timer.service;
 
 import com.pomodoro.timer.model.TimerStatus;
@@ -41,11 +40,14 @@ public class TimerService {
 
         while (running && !Instant.now().isBefore(endTime)) {
 
+            // Save every completed session, including breaks
+            int minutes = (int) (getDuration() / 60);
+            fileManager.saveSession(mode, minutes);
+
             if (mode.equals("FOCUS")) {
+
                 completedSessions++;
                 focusSessions++;
-
-                fileManager.saveSession(focusMinutes);
 
                 if (focusSessions % 4 == 0) {
                     mode = "LONG_BREAK";
