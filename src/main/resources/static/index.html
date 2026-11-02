@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FocusFlow - Pomodoro Timer</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>FocusFlow</h1>
+        <p>Focus better. Achieve more.</p>
+    </header>
+
+    <main class="container">
+
+        <!-- TIMER SECTION -->
+
+        <section class="timer-card">
+
+            <h2 id="modeTitle">Focus Session</h2>
+
+            <div class="mode-buttons">
+                <button onclick="changeMode('FOCUS')">
+                    Focus
+                </button>
+
+                <button onclick="changeMode('SHORT_BREAK')">
+                    Short Break
+                </button>
+
+                <button onclick="changeMode('LONG_BREAK')">
+                    Long Break
+                </button>
+            </div>
+
+            <div class="timer-circle">
+                <span id="timer">25:00</span>
+            </div>
+
+            <div class="timer-buttons">
+                <button id="startBtn" onclick="startTimer()">
+                    Start
+                </button>
+
+                <button onclick="pauseTimer()">
+                    Pause
+                </button>
+
+                <button onclick="resetTimer()">
+                    Reset
+                </button>
+            </div>
+
+            <p id="sessionInfo">Completed Sessions: 0</p>
+
+        </section>
+
+        <!-- SETTINGS SECTION -->
+
+        <section class="card">
+
+            <h2>Timer Settings</h2>
+
+            <form id="settingsForm">
+
+                <label>Focus Minutes</label>
+                <input type="number" id="focusMinutes"
+                       value="25" min="1" max="180" required>
+
+                <label>Short Break Minutes</label>
+                <input type="number" id="shortMinutes"
+                       value="5" min="1" max="60" required>
+
+                <label>Long Break Minutes</label>
+                <input type="number" id="longMinutes"
+                       value="15" min="1" max="120" required>
+
+                <button type="submit">Save Settings</button>
+
+            </form>
+
+        </section>
+
+        <!-- TASK SECTION -->
+
+        <section class="card">
+
+            <h2>My Tasks</h2>
+
+            <form id="taskForm">
+
+                <input type="text" id="taskInput"
+                       placeholder="Enter a new task" required>
+
+                <button type="submit">Add Task</button>
+
+            </form>
+
+            <ul id="taskList"></ul>
+
+        </section>
+
+        <!-- STATISTICS SECTION -->
+
+        <section class="stats">
+
+            <div class="stat-card">
+                <h3 id="completedCount">0</h3>
+                <p>Completed Sessions</p>
+            </div>
+
+            <div class="stat-card">
+                <h3 id="focusCount">0</h3>
+                <p>Focus Sessions</p>
+            </div>
+
+            <div class="stat-card">
+                <h3 id="focusTime">0</h3>
+                <p>Focus Minutes</p>
+            </div>
+
+        </section>
+
+        <!-- SESSION HISTORY -->
+
+        <section class="card">
+
+            <h2>Session History</h2>
+
+            <ul id="historyList"></ul>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <p>FocusFlow © 2026 | Stay Focused, Stay Productive</p>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

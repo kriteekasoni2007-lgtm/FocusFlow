@@ -1,0 +1,189 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f3f0fa;
+    color: #333;
+}
+
+header {
+    text-align: center;
+    padding: 30px;
+    background: #7565a8;
+    color: white;
+}
+
+header h1 {
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+
+.container {
+    width: 90%;
+    max-width: 900px;
+    margin: 30px auto;
+}
+
+.timer-card,
+.card {
+    background: white;
+    padding: 25px;
+    margin-bottom: 25px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+h2 {
+    margin-bottom: 20px;
+    color: #594b82;
+}
+
+.mode-buttons,
+.timer-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+button {
+    background: #7565a8;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin: 5px;
+    font-size: 14px;
+}
+
+button:hover {
+    background: #594b82;
+}
+
+.timer-circle {
+    width: 220px;
+    height: 220px;
+    border: 10px solid #9bc9ae;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px auto;
+}
+
+#timer {
+    font-size: 48px;
+    font-weight: bold;
+    color: #594b82;
+}
+
+#sessionInfo {
+    margin-top: 20px;
+    color: #777;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 15px;
+}
+
+input {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 15px;
+    width: 100%;
+}
+
+label {
+    text-align: left;
+    font-weight: bold;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.stat-card {
+    background: white;
+    padding: 25px 10px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+
+.stat-card h3 {
+    color: #7565a8;
+    font-size: 30px;
+}
+
+.stat-card p {
+    margin-top: 8px;
+    font-size: 14px;
+}
+
+ul {
+    list-style: none;
+    text-align: left;
+}
+
+li {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+}
+
+li button {
+    padding: 7px 10px;
+    font-size: 12px;
+}
+
+.completed {
+    text-decoration: line-through;
+    color: gray;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    color: #777;
+}
+
+@media (max-width: 600px) {
+
+    .container {
+        width: 94%;
+    }
+
+    .stats {
+        grid-template-columns: 1fr;
+    }
+
+    .timer-circle {
+        width: 190px;
+        height: 190px;
+    }
+
+    #timer {
+        font-size: 40px;
+    }
+
+    button {
+        padding: 10px 13px;
+    }
+}
